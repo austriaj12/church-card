@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        const format = (value, label) => `<div class="text-center"><div class="bg-black/20 rounded-md px-2 py-1">${String(value).padStart(2, '0')}</div><div class="text-xs mt-1 opacity-70">${label}</div></div>`;
+        const format = (value, label) => `<div class="text-center"><div class="bg-black/20 rounded-md px-1.5 py-0.5">${String(value).padStart(2, '0')}</div><div class="text-xs mt-1 opacity-70">${label}</div></div>`;
 
         countdownTimerEl.innerHTML = `
             ${format(days, 'Days')}
