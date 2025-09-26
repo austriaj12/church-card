@@ -29,7 +29,7 @@
     <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-40">
         <div class="max-w-md mx-auto flex items-center gap-3 p-3">
             <img src="churchlogo.png" alt="The Living Saviour logo" class="w-10 h-10 rounded-md object-contain"/>
-            <span class="font-bold text-gray-800 text-lg">The Living Saviour Christian Fellowship</span>
+            <span class="font-bold text-gray-800 text-base sm:text-lg">The Living Saviour Christian Fellowship</span>
         </div>
     </header>
 
@@ -37,8 +37,8 @@
         <div class="w-full max-w-md mx-auto">
 
             <div id="countdown-container" class="mb-6 text-center p-4 rounded-xl bg-gray-800 text-white shadow-lg opacity-0 transition-opacity duration-500">
-                <h2 class="text-sm font-semibold uppercase tracking-widest opacity-70">Next Service</h2>
-                <p class="text-lg font-bold mt-1">Sunday at 9:30 AM</p>
+                <h2 class="text-xs font-semibold uppercase tracking-widest opacity-70">Next Service</h2>
+                <p class="text-base font-bold mt-1">Sunday Service at 9:30 AM</p>
                 <div id="countdown-timer" class="flex justify-center gap-2 sm:gap-4 mt-3 text-lg sm:text-2xl font-mono font-bold"></div>
             </div>
 
@@ -111,6 +111,17 @@
             </div>
             <div class="mt-5 text-center">
                 <button id="welcome-continue" class="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold transition-colors">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="redirect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <div id="redirect-modal-content" class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6 mx-4 scale-95 opacity-0 transition-all duration-300 ease-out">
+            <h2 id="redirect-title" class="text-2xl font-bold mb-2 text-center"></h2>
+            <p id="redirect-message" class="text-center text-gray-700 mb-5"></p>
+            <div class="text-center">
+                <a id="redirect-continue" href="#" target="_blank" class="w-full inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold transition-colors">Continue to Facebook</a>
+                <button id="redirect-cancel" class="w-full mt-2 text-sm text-gray-600 hover:underline">Cancel</button>
             </div>
         </div>
     </div>
