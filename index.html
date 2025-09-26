@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Connect Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Boxicons for FB icons -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 999px;
+            transform: scale(0);
+            background: rgba(255,255,255,0.18);
+            animation: ripple 600ms linear;
+            pointer-events: none;
+            width: 16px;
+            height: 16px;
+        }
+        @keyframes ripple { to { transform: scale(6); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div class="fixed inset-0 flex items-center justify-center pointer-events-none z-0 sm:hidden" aria-hidden="true">
+        <img src="churchlogo.png" alt="Logo watermark" class="w-2/3 max-w-[420px] mx-auto" style="opacity:0.06">
+    </div>
+
+    <div class="min-h-screen flex items-center justify-center p-6">
+        <div class="w-full max-w-md mx-auto">
+
+            <div class="mb-3 rounded-xl bg-black p-5 shadow-lg text-white relative z-20">
+                <div class="flex items-center gap-4">
+                    <img src="churchlogo.png" alt="The Living Saviour logo" class="w-16 h-16 rounded-lg object-contain"/>
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">The Living Saviour<br><span class="block">Christian Fellowship</span></h1>
+                        <p class="mt-1 text-sm sm:text-base opacity-95">Connect with us and our ministries online.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 rounded-lg bg-green-50 p-4 shadow-sm text-green-900 border-l-4 border-green-600 relative z-30">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-green-600 flex-none mt-1" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7.17 6A5 5 0 0 0 3 10.83V13a2 2 0 0 0 2 2h2v-4.17A5 5 0 0 0 7.17 6zM17.17 6A5 5 0 0 0 13 10.83V13a2 2 0 0 0 2 2h2v-4.17A5 5 0 0 0 17.17 6z" fill="currentColor"></path>
+                    </svg>
+                    <p class="text-base sm:text-lg italic">“But God shows his love for us in that while we were still sinners, Christ died for us.” — <strong class="font-semibold">Romans 5:8</strong></p>
+                </div>
+            </div>
+
+            <main class="space-y-4 relative z-10">
+
+                <article id="card-main" class="card-animate relative z-30 overflow-hidden rounded-xl p-4 shadow-md bg-white/6 backdrop-blur-sm border border-white/10">
+                    <h2 class="text-lg font-semibold text-black">The Living Saviour Christian Fellowship</h2>
+                    <p class="text-sm text-black/80 mt-1">Main Church Page</p>
+                    <div class="mt-3">
+                        <a href="#" id="link-main" class="inline-flex items-center justify-center gap-3 w-full bg-blue-600 text-white font-bold py-2 rounded-lg z-40 whitespace-nowrap">
+                                <i class="bx bxl-facebook-circle text-white text-lg" aria-hidden="true"></i>
+                            Visit FB Page
+                        </a>
+                    </div>
+                </article>
+
+                <article id="card-youth" class="card-animate relative z-30 overflow-hidden rounded-xl p-4 shadow-md bg-white/6 backdrop-blur-sm border border-white/10 flex gap-3 items-center">
+                    <img src="youthlogo.jpg" alt="Youth logo" class="w-12 h-12 rounded-md object-cover">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-black">The Living Saviour Youth Ministry</h3>
+                        <p class="text-sm text-black/80 mt-1">Youth & Young Pro Ministry</p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="#" id="link-youth" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold text-sm sm:text-base py-2 px-4 rounded-lg z-40 flex-none whitespace-nowrap" aria-label="Visit the Living Saviour Youth Ministry Facebook page">
+                                <i class="bx bxl-facebook-circle text-white text-lg" aria-hidden="true"></i>
+                            Visit FB Page
+                        </a>
+                    </div>
+                </article>
+
+                <article id="card-partner" class="card-animate relative z-30 overflow-hidden rounded-xl p-4 shadow-md bg-white/6 backdrop-blur-sm border border-white/10 flex gap-3 items-center">
+                    <img src="childrenslogo.jpg" alt="Children's logo" class="w-12 h-12 rounded-md object-cover">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-black">The Living Saviour Children's Ministry</h3>
+                        <p class="text-sm text-black/80 mt-1">Children's Ministry</p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="#" id="link-partner" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold text-sm sm:text-base py-2 px-4 rounded-lg z-40 flex-none whitespace-nowrap" aria-label="Visit the Children's Ministry Facebook page">
+                                <i class="bx bxl-facebook-circle text-white text-lg" aria-hidden="true"></i>
+                            Visit FB Page
+                        </a>
+                    </div>
+                </article>
+
+                <p class="text-center text-sm text-gray-600 mt-4">Sharing the love of Christ and connecting people through faith.</p>
+
+            </main>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <div id="welcome-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <div id="welcome-modal-content" class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6 mx-4 scale-95 opacity-0 transition-all duration-300 ease-out">
+            <h2 class="text-2xl font-bold mb-4 text-center">Welcome!</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-300 p-3 rounded-md mb-4">
+                <p class="text-sm text-blue-900">We’re glad you’re here. May you be reminded today of God’s great love for you through Jesus Christ. Feel free to connect with us through our church pages. God bless you!</p>
+            </div>
+            <div class="mt-6 text-center">
+                <button id="welcome-continue" class="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold transition-colors">Continue</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
