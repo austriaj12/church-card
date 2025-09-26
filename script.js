@@ -1,5 +1,15 @@
 // Wait for DOM ready then run animations and attach interactions
 document.addEventListener('DOMContentLoaded', () => {
+    // --- URL Parameter Handling ---
+    // This section checks if an 'id' is present in the URL, like ?id=12345
+    // If no ID is found, it uses a default one.
+    const params = new URLSearchParams(window.location.search);
+    let cardId = params.get('id');
+
+    if (!cardId) {
+        cardId = "0097491721"; // Set a default ID if none is in the URL
+    }
+
     // Welcome modal behavior
     const welcomeModal = document.getElementById('welcome-modal');
     const welcomeModalContent = document.getElementById('welcome-modal-content');
@@ -72,19 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // On click navigate to the associated link (if present)
         card.addEventListener('click', (ev) => {
-            ev.preventDefault();
-            // Prefer explicit button link if user clicks it
-            if (ev.target && ev.target.tagName === 'A') {
-                const id = ev.target.id;
-                const url = links[id] || ev.target.href;
-                if (url) window.open(url, '_blank');
-                return;
-            }
-            // Otherwise open card's first anchor
             if (button) {
+                ev.preventDefault(); // Prevent default link behavior only if we are handling it
                 const id = button.id;
                 const url = links[id] || button.href;
-                if (url) window.open(url, '_blank');
+                // Ensure we have a valid URL before opening
+                if (url && url !== '#') {
+                    window.open(url, '_blank');
+                }
             }
         });
 
