@@ -73,6 +73,40 @@ document.addEventListener('DOMContentLoaded', () => {
         'link-partner': 'https://www.facebook.com/TheLivingSaviourChildrenMinistry'
     };
 
+    const redirectMessages = {
+        'link-main': {
+            title: 'You are invited!',
+            message: 'We welcome you to join us in worship and fellowship at The Living Saviour Christian Fellowship.'
+        },
+        'link-youth': {
+            title: 'Hey there!',
+            message: 'Looking for a place to belong? Our Youth Ministry invites you to connect, worship, and grow together in Christ.'
+        }
+    };
+
+    const redirectModal = document.getElementById('redirect-modal');
+    const redirectModalContent = document.getElementById('redirect-modal-content');
+    const redirectTitle = document.getElementById('redirect-title');
+    const redirectMessage = document.getElementById('redirect-message');
+    const redirectContinue = document.getElementById('redirect-continue');
+    const redirectCancel = document.getElementById('redirect-cancel');
+
+    function showRedirectModal(title, message, url) {
+        redirectTitle.textContent = title;
+        redirectMessage.textContent = message;
+        redirectContinue.href = url;
+        redirectModal.classList.remove('opacity-0', 'pointer-events-none');
+        redirectModalContent.classList.remove('scale-95', 'opacity-0');
+    }
+
+    function hideRedirectModal() {
+        redirectModal.classList.add('opacity-0', 'pointer-events-none');
+        redirectModalContent.classList.add('scale-95', 'opacity-0');
+    }
+
+    redirectCancel.addEventListener('click', hideRedirectModal);
+    redirectContinue.addEventListener('click', hideRedirectModal);
+
     cards.forEach(card => {
         card.style.cursor = 'pointer';
 
@@ -87,7 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 ev.preventDefault(); 
                 const id = button.id;
                 const url = links[id] || button.href;
-                if (url && url !== '#') {
+                const customMessage = redirectMessages[id];
+
+                if (customMessage && url && url !== '#') {
+                    showRedirectModal(customMessage.title, customMessage.message, url);
+                } else if (url && url !== '#') {
                     window.open(url, '_blank');
                 }
             }
