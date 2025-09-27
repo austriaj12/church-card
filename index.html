@@ -192,5 +192,33 @@
             </div>
         </div>
     </div>
+
+    <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+        <div id="event-modal-content" class="relative bg-white rounded-lg shadow-xl max-w-xs w-full p-5 mx-4 scale-95 opacity-0 transition-all duration-300 ease-out">
+            <button id="event-close-button" class="absolute top-3 right-3 text-red-500 hover:text-red-700 transition-colors" aria-label="Close">
+                <i class='bx bx-x text-2xl'></i>
+            </button>
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 mb-3">
+                <i class='bx bxs-party text-2xl text-yellow-500'></i>
+            </div>
+            <h2 class="text-lg font-bold mb-1 text-center text-gray-800">
+                Upcoming Event!
+            </h2>
+            <p class="text-center text-sm text-gray-500 mb-4">You're invited to celebrate our 10th Church Anniversary with us.</p>
+            
+            <div class="space-y-3 text-sm text-gray-700">
+                <div class="flex items-center gap-3">
+                    <i class='bx bxs-calendar-event text-lg text-gray-400 w-5 text-center'></i>
+                    <span class="font-medium">October 26 (Sunday)</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class='bx bxs-map-pin text-lg text-gray-400 w-5 text-center'></i>
+                    <span class="font-medium">Mabuhay Homes Covered Court</span>
+                </div>
+            </div>
+            <div id="anniversary-countdown" class="flex justify-center gap-2 mt-5 text-gray-800 font-mono font-bold"></div>
+            <p class="text-center text-xs text-gray-500 italic mt-4">Come and celebrate God’s faithfulness with us!</p>
+        </div>
+    </div>
 </body>
 </html>
