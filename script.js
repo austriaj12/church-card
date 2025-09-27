@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (welcomeModal && welcomeModalContent) {
             welcomeModal.classList.add('opacity-0', 'pointer-events-none');
             startPageAnimations();
+            setTimeout(() => {
+                showEventModal();
+            }, 5000);
         }
     }
     showWelcome();
@@ -160,11 +163,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Event Modal Logic
+    const eventModal = document.getElementById('event-modal');
+    const eventModalContent = document.getElementById('event-modal-content');
+    const eventCloseButton = document.getElementById('event-close-button');
+
+    function showEventModal() {
+        if (eventModal && eventModalContent) {
+            eventModal.classList.remove('opacity-0', 'pointer-events-none');
+            eventModalContent.classList.remove('scale-95', 'opacity-0');
+        }
+    }
+
+    function hideEventModal() {
+        eventModal.classList.add('opacity-0', 'pointer-events-none');
+        eventModalContent.classList.add('scale-95', 'opacity-0');
+    }
+
+    if(eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal);
+
+    const anniversaryCountdownEl = document.getElementById('anniversary-countdown');
+    let anniversaryInterval;
+
+    function updateAnniversaryCountdown() {
+        if (!anniversaryCountdownEl) return;
+
+        const now = new Date();
+        let targetYear = now.getFullYear();
+        const anniversaryDate = new Date(targetYear, 9, 26, 9, 0, 0); 
+
+        if (now.getTime() > anniversaryDate.getTime()) {
+            targetYear++;
+            anniversaryDate.setFullYear(targetYear);
+        }
+
+        const distance = anniversaryDate.getTime() - now.getTime();
+
+        if (distance < 0) {
+            anniversaryCountdownEl.innerHTML = `<div class="text-sm">The event has passed. See you next year!</div>`;
+            clearInterval(anniversaryInterval);
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const format = (value, label) => `<div class="text-center"><div class="bg-gray-100 rounded-md px-1.5 py-0.5">${String(value).padStart(2, '0')}</div><div class="text-xs mt-1 opacity-70">${label}</div></div>`;
+
+        anniversaryCountdownEl.innerHTML = `${format(days, 'Days')}${format(hours, 'Hrs')}${format(minutes, 'Min')}${format(seconds, 'Sec')}`;
+    }
+
     const countdownTimerEl = document.getElementById('countdown-timer');
 
     function getNextSunday() {
         const now = new Date();
-        const nextSunday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 30, 0); // Today at 9:30 AM
+        const nextSunday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 30, 0); 
         
         nextSunday.setDate(nextSunday.getDate() + (7 - nextSunday.getDay()) % 7);
 
@@ -203,6 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (countdownTimerEl) {
         updateCountdown();
         setInterval(updateCountdown, 1000);
+    }
+
+    if (anniversaryCountdownEl) {
+        updateAnniversaryCountdown();
+        anniversaryInterval = setInterval(updateAnniversaryCountdown, 1000);
     }
 
     const headerLogo = document.querySelector('header img');
