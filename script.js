@@ -27,26 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (welcomeContinue) welcomeContinue.addEventListener('click', hideWelcome);
     document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') hideWelcome(); });
 
-    function startPageAnimations() {
-        const countdownContainer = document.getElementById('countdown-container');
-        if (countdownContainer) {
-            countdownContainer.classList.remove('opacity-0');
-        }
-
-        const cards = [
-            document.getElementById('schedule-card'),
-            document.getElementById('card-main'),
-            document.getElementById('card-youth'),
-            document.getElementById('card-partner'),
-            document.getElementById('location-card')
-        ].filter(Boolean);
-
-        cards.forEach((card, i) => {
-            card.style.transitionDelay = `${100 * (i + 1)}ms`;
-            card.classList.add('opacity-100', 'translate-y-0');
-        });
-    }
-
     const cards = [
         document.getElementById('schedule-card'),
         document.getElementById('card-main'),
@@ -55,9 +35,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('location-card')
     ].filter(Boolean);
 
-    cards.forEach((card, i) => {
-        card.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-500', 'ease-out');
+    function setupInitialCardState() {
+        cards.forEach((card, i) => {
+            card.classList.add('opacity-0', 'transition-all', 'duration-700', 'ease-out');
+            if (i % 2 === 0) {
+                card.classList.add('-translate-x-8'); 
+            } else {
+                card.classList.add('translate-x-8'); 
+            }
+        });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', '-translate-x-8', 'translate-x-8');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
     });
+
+    function startPageAnimations() {
+        const countdownContainer = document.getElementById('countdown-container');
+        if (countdownContainer) {
+            countdownContainer.classList.remove('opacity-0');
+        }
+        
+        setupInitialCardState();
+        cards.forEach(card => {
+            card.classList.remove('opacity-100', 'translate-x-0');
+            observer.observe(card);
+        });
+    }
+
+    setupInitialCardState();
+
+
+
 
     function createRipple(container, x, y) {
         const r = document.createElement('span');
@@ -188,5 +204,26 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCountdown();
         setInterval(updateCountdown, 1000);
     }
+
+    const headerLogo = document.querySelector('header img');
+    const pageContentWrapper = document.getElementById('page-content-wrapper');
+    let isContentVisible = true;
+
+    if (headerLogo && pageContentWrapper) {
+        headerLogo.style.cursor = 'pointer';
+        headerLogo.title = 'Click to show/hide content';
+
+        headerLogo.addEventListener('click', () => {
+            isContentVisible = !isContentVisible;
+            if (isContentVisible) {
+                pageContentWrapper.classList.remove('hidden');
+                setTimeout(startPageAnimations, 50); 
+            } else {
+                pageContentWrapper.classList.add('hidden');
+            }
+        });
+    }
+
+
 
 });
