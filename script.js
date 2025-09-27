@@ -173,7 +173,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (eventModal && eventModalContent) {
             eventModal.classList.remove('opacity-0', 'pointer-events-none');
             eventModalContent.classList.remove('scale-95', 'opacity-0');
-            if (eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal, { once: true });
+
+            const closeHandler = (e) => {
+                if (e.target === eventCloseButton || e.target.closest('#event-close-button') || e.target === eventModal) {
+                    hideEventModal();
+                    eventModal.removeEventListener('pointerdown', closeHandler);
+                }
+            };
+
+            eventModal.addEventListener('pointerdown', closeHandler);
         }
     }
 
