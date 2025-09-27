@@ -7,6 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <style>
+        body {
+            background-image: url('backgroundcard.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         .ripple {
             position: absolute;
             border-radius: 999px;
@@ -45,11 +51,56 @@
                 <div id="countdown-timer" class="flex justify-center gap-2 sm:gap-3 mt-3 text-base sm:text-xl font-mono font-bold"></div>
             </div>
 
+            <div id="schedule-card" class="card-animate mb-6 rounded-xl bg-white/70 backdrop-blur-sm border border-white/20 shadow-lg shadow-black/5 p-4">
+                <h2 class="font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
+                    <i class='bx bx-calendar-week text-xl text-gray-600'></i>
+                    <span>Schedule of Activities</span>
+                </h2>
+                <div class="space-y-3 text-xs pt-2">
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Women’s Fellowship</span>
+                        <span class="text-gray-600 text-right">Every Sunday, 2:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Men’s Fellowship</span>
+                        <span class="text-gray-600 text-right">Every 3rd Week of the Month, 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Young Pro Fellowship</span>
+                        <span class="text-gray-600 text-right">Every 3rd Week of the Month, 2:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Youth Fellowship</span>
+                        <span class="text-gray-600 text-right">Every 2nd Week of the Month, 2:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Youth & Young Pros Fellowship</span>
+                        <span class="text-gray-600 text-right">Every Last Sunday of the Month, 2:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Small Group Gathering</span>
+                        <span class="text-gray-600 text-right">Every Sunday</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Koinonia</span>
+                        <span class="text-gray-600 text-right">Every 1st Week (after Sunday Service)</span>
+                    </div>
+                    <div class="flex justify-between items-start border-b border-white/10 pb-2">
+                        <span class="font-semibold text-gray-800">Prayerful</span>
+                        <span class="text-gray-600 text-right">Every Last Saturday of the Month, 5:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <span class="font-semibold text-gray-800">Dawn Watch Devotion</span>
+                        <span class="text-gray-600 text-right">Every 1st Sunday, 5:30 AM</span>
+                    </div>
+                </div>
+            </div>
+
             <main id="main-content" class="space-y-4 relative z-10">
 
                 <article id="card-main" class="card-animate relative z-30 overflow-hidden rounded-xl p-4 bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg shadow-black/5">
-                    <h2 class="text-base font-semibold text-black">The Living Saviour Christian Fellowship</h2>
-                    <p class="text-sm text-black/80 mt-1">Main Church Page</p>
+                    <h2 class="text-base font-semibold text-white">The Living Saviour Christian Fellowship</h2>
+                    <p class="text-sm text-white/80 mt-1">Main Church Page</p>
                     <div class="mt-3">
                         <a href="#" id="link-main" class="inline-flex items-center justify-center gap-3 w-full bg-blue-600 text-white font-bold py-1.5 rounded-lg z-40 whitespace-nowrap">
                                 <i class="bx bxl-facebook-circle text-white text-lg" aria-hidden="true"></i>
@@ -62,8 +113,8 @@
                     <div class="flex items-start gap-3">
                         <img src="youthlogo.jpg" alt="Youth logo" class="w-12 h-12 rounded-md object-cover flex-none">
                         <div class="flex-1">
-                            <h3 class="text-base font-semibold text-black">The Living Saviour Youth Ministry</h3>
-                            <p class="text-sm text-black/80 mt-1">Youth & Young Pro Ministry</p>
+                            <h3 class="text-base font-semibold text-white">The Living Saviour Youth Ministry</h3>
+                            <p class="text-sm text-white/80 mt-1">Youth & Young Pro Ministry</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -78,8 +129,8 @@
                     <div class="flex items-start gap-3">
                         <img src="childrenslogo.jpg" alt="Children's logo" class="w-12 h-12 rounded-md object-cover flex-none">
                         <div class="flex-1">
-                            <h3 class="text-base font-semibold text-black">The Living Saviour Children's Ministry</h3>
-                            <p class="text-sm text-black/80 mt-1">Children's Ministry</p>
+                            <h3 class="text-base font-semibold text-white">The Living Saviour Children's Ministry</h3>
+                            <p class="text-sm text-white/80 mt-1">Children's Ministry</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -90,7 +141,20 @@
                     </div>
                 </article>
 
-                <p class="text-center text-xs sm:text-sm text-gray-600 mt-4">Sharing the love of Christ and connecting people through faith.</p>
+                <div id="location-card" class="card-animate rounded-xl bg-white/70 backdrop-blur-sm border border-white/20 shadow-lg shadow-black/5 overflow-hidden">
+                    <a href="https://www.google.com/maps/place/14%C2%B030'28.9%22N+121%C2%B011'58.9%22E/@14.508032,121.199706,17z/data=!4m4!3m3!8m2!3d14.508032!4d121.199706?entry=ttu" target="_blank" rel="noopener noreferrer" class="block">
+                        <img src="churchouse.jpg" alt="The Living Saviour Christian Fellowship Church Building" class="w-full h-32 object-cover">
+                    </a>
+                    <div class="p-4">
+                        <h2 class="font-bold text-gray-800">Our Location</h2>
+                        <p class="text-sm text-gray-600 mb-3">Visit us at our church home.</p>
+                        <a href="https://www.google.com/maps/place/14%C2%B030'28.9%22N+121%C2%B011'58.9%22E/@14.508032,121.199706,17z/data=!4m4!3m3!8m2!3d14.508032!4d121.199706?entry=ttu" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full bg-green-600 text-white font-bold py-1.5 rounded-lg whitespace-nowrap hover:bg-green-700 transition-colors">
+                            <i class='bx bx-map-alt text-lg'></i> View on Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs sm:text-sm text-white/80 mt-4">Sharing the love of Christ and connecting people through faith.</p>
 
             </main>
 
