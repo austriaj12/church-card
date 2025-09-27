@@ -165,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Event Modal Logic
     const eventModal = document.getElementById('event-modal');
     const eventModalContent = document.getElementById('event-modal-content');
     const eventCloseButton = document.getElementById('event-close-button');
@@ -182,7 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         eventModalContent.classList.add('scale-95', 'opacity-0');
     }
 
-    // Initial setup
+    if (eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal);
+
     if (welcomeModal) {
         showWelcome();
     } else {
