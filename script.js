@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideWelcome() {
         if (welcomeModal && welcomeModalContent) {
             welcomeModal.classList.add('opacity-0', 'pointer-events-none');
-            startPageAnimations();
-            setTimeout(() => {
-                showEventModal();
-            }, 5000);
+            startPageAnimationsAndShowEventModal();
         }
     }
-    showWelcome();
+
+    function startPageAnimationsAndShowEventModal() {
+        startPageAnimations();
+        setTimeout(showEventModal, 5000);
+    }
+
     if (welcomeContinue) welcomeContinue.addEventListener('click', hideWelcome);
     document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') hideWelcome(); });
 
@@ -180,7 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
         eventModalContent.classList.add('scale-95', 'opacity-0');
     }
 
-    if(eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal);
+    // Initial setup
+    if (welcomeModal) {
+        showWelcome();
+    } else {
+        startPageAnimationsAndShowEventModal();
+    }
 
     const anniversaryCountdownEl = document.getElementById('anniversary-countdown');
     let anniversaryInterval;
