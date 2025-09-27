@@ -34,9 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const cards = [
+            document.getElementById('schedule-card'),
             document.getElementById('card-main'),
             document.getElementById('card-youth'),
-            document.getElementById('card-partner')
+            document.getElementById('card-partner'),
+            document.getElementById('location-card')
         ].filter(Boolean);
 
         cards.forEach((card, i) => {
@@ -46,9 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const cards = [
+        document.getElementById('schedule-card'),
         document.getElementById('card-main'),
         document.getElementById('card-youth'),
-        document.getElementById('card-partner')
+        document.getElementById('card-partner'),
+        document.getElementById('location-card')
     ].filter(Boolean);
 
     cards.forEach((card, i) => {
