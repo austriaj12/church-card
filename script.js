@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (eventModal && eventModalContent) {
             eventModal.classList.remove('opacity-0', 'pointer-events-none');
             eventModalContent.classList.remove('scale-95', 'opacity-0');
+            if (eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal, { once: true });
         }
     }
 
@@ -180,8 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         eventModal.classList.add('opacity-0', 'pointer-events-none');
         eventModalContent.classList.add('scale-95', 'opacity-0');
     }
-
-    if (eventCloseButton) eventCloseButton.addEventListener('click', hideEventModal);
 
     if (welcomeModal) {
         showWelcome();
